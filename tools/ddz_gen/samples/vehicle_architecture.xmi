@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:DDS="http://www.omg.org/spec/DDS-UML/20110301">
+  <uml:Model xmi:id="model_vehicle" name="VehicleArchitecture">
+    <packagedElement xmi:type="uml:Class" xmi:id="cls_vehicle_status" name="VehicleStatus">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="attr_vehicle_id" name="vehicle_id" type="Integer"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="attr_speed" name="speed" type="Real"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="attr_battery" name="battery_percent" type="Real"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="attr_gear" name="current_gear" type="Integer"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="attr_reverse" name="is_reverse" type="Boolean"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Class" xmi:id="cls_vehicle_node" name="VehicleTelemetryApp">
+      <ownedPort xmi:type="uml:Port" xmi:id="port_status_pub" name="status_pub" type="cls_vehicle_status"/>
+      <ownedPort xmi:type="uml:Port" xmi:id="port_status_sub" name="status_sub" type="cls_vehicle_status"/>
+    </packagedElement>
+  </uml:Model>
+
+  <!-- OMG DDS-UML Stereotype Applications -->
+  <DDS:Topic xmi:id="st_topic" base_Class="cls_vehicle_status" topicName="VehicleStatusTopic" extensibility="MUTABLE"/>
+  <DDS:Key xmi:id="st_key" base_Property="attr_vehicle_id"/>
+
+  <DDS:DomainParticipant xmi:id="st_part" base_Class="cls_vehicle_node" domainId="0"/>
+  <DDS:DataWriter xmi:id="st_writer" base_Port="port_status_pub" reliability="RELIABLE" durability="TRANSIENT_LOCAL" history_depth="10" deadline_ms="200"/>
+  <DDS:DataReader xmi:id="st_reader" base_Port="port_status_sub" reliability="BEST_EFFORT" durability="VOLATILE" history_depth="5"/>
+</xmi:XMI>

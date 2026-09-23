@@ -1,0 +1,15 @@
+module SensorNetwork {
+    enum SensorType {
+        TEMPERATURE,
+        PRESSURE,
+        ACCELEROMETER
+    };
+
+    @key struct SensorReading {
+        @key long sensor_id;
+        SensorType type;
+        double reading;
+        sequence<float, 4> calibration_factors;
+        string<32> device_name;
+    };
+};

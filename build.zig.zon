@@ -1,0 +1,17 @@
+.{
+    .name = .ddz,
+    .version = "0.1.0-alpha",
+    .fingerprint = 0x1de8c6f15ae5468, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.17.0-dev.1737+de207594e",
+    .dependencies = .{},
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "tools",
+        "examples",
+        "resources",
+        "LICENSE",
+        "README.md",
+    },
+}

@@ -1,0 +1,18 @@
+// OMG IDL 4.2 DDS-RPC service definition for motor actuation and feedback
+module Control {
+    struct MotorStatus {
+        long motor_id;
+        double current_position;
+        double current_velocity;
+        double temperature;
+        boolean is_enabled;
+    };
+
+    interface MotorService {
+        boolean enable_motor(in long motor_id);
+        boolean disable_motor(in long motor_id);
+        boolean set_target_velocity(in long motor_id, in double velocity);
+        MotorStatus get_status(in long motor_id);
+        void emergency_stop();
+    };
+};

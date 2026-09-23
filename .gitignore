@@ -1,0 +1,36 @@
+# Zig build output
+zig-cache/
+zig-out/
+.zig-cache/
+*.exe
+*.o
+*.obj
+*.lib
+*.dll
+*.pdb
+
+# Editor and IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# DDZ runtime artifacts
+.ddz_cache_*
+
+# Temporary scripts and test files
+patch_*.py
+test_io*.zig
+test.txt
+
+# Local repository files kept locally
+/CHANGELOG.md
+/CONTRIBUTING.md
+/CODE_OF_CONDUCT.md
+/.github/
+/docs/
+/scripts/
